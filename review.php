@@ -1,18 +1,20 @@
 <?php 
  session_start();
-
-/*  echo $_SESSION["fullname"];
- echo $_SESSION["email"];
- echo $_SESSION["product"];
- echo $_SESSION["ordernumber"];
- echo $_SESSION["verification"]; */
+//echo "ARRIBA";
+// echo $_SESSION["fullname"];
+// echo $_SESSION["email"];
+// echo $_SESSION["product"];
+// echo $_SESSION["ordernumber"];
+// echo $_SESSION["verification"];
  if ($_SESSION["verification"]==="verified") { 
   $_SESSION["verification"]="completed"; 
  } else {
    // Finally, destroy the session.
  session_destroy();
    header("Location: index.php", true, 301);
- } 
+ }
+// echo "this is order number";
+// echo $_SESSION["ordernumber"];
 ?>
 <!doctype html><html lang="en"><head>
 <!-- Required meta tags -->
@@ -415,4 +417,15 @@ function fixStepIndicator(n) {
   x[n].className += " active";
 }
 </script>
+
+
+
+//echo $_SESSION["fullname"];
+//echo $_SESSION["email"];
+//echo $_SESSION["product"];
+//echo $_SESSION["ordernumber"];
+//echo $_SESSION["verification"];
+
+
+
 										</html>
