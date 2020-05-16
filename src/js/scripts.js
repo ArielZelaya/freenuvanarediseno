@@ -11,26 +11,43 @@ function firstForm(){
     var email = document.getElementById("email").value;
     var select = document.getElementById("product").value;
     var ordernumber = document.getElementById("ordernumber").value;
+    var valit = document.getElementById("valida").value;
     if(fname ==""){
-        Swal.fire('Complete your full name');
+        Swal.fire({text:'Complete your full name', title: " ",});
         return false;
     }
     if(email ==""){
-        Swal.fire('Complete your email');
+        Swal.fire({text:'Complete your email', title: " ",});
         console.log("Email vacio");
         return false;
     }
     if(select =="select"){
-        console.log("select vacio");
-        Swal.fire('Choose a Nuvana product');
+        Swal.fire({text:'Choose a Nuvana product', title: " ",});
         return false;
     }
     if(ordernumber =="" ){
-        /* Swal.fire(ordernumber.value.length); */
-        Swal.fire('Complete your order number');
+
+        Swal.fire({text:'Complete your order number', title: " ",});
         return false;
     }
-
+    if(valit !=0){
+        if(valit ==1){
+            Swal.fire({
+                text: 'Please check your order number and try again later!', title: " ",
+                footer: '<a class="clickable" onclick="notworkingcodesender()" style="cursor:pointer;" >Order number not working?</a>',
+              });
+          return false;
+        }
+        else if(valit==2){
+            Swal.fire({text:'Order number already used', title: " ",});
+          return false;
+        }
+        else{
+            Swal.fire({text:'Our team recommends to use Nuvana products for at least 7 days before reviewing', title: " ",});
+            return false;
+        }
+        return true;
+      }
 }
 function myFunction2() {
     var copyText = document.getElementById("myInput");
@@ -65,4 +82,86 @@ function myFunction2() {
    function show_steps(){
     var span =  document.getElementById("copy-span");
      span.style.display = "inline-block";
+}
+
+/* SCRIPT FOR ORDER NUMBER VALIDATION */
+
+$(document).ready(function() {
+    $("#ordernumber").keyup(function(e) {
+        var inputvalida = this.value;
+        refinedvalue = inputvalida.replace(/_/g, '');
+        console.log(refinedvalue.length);
+      if (refinedvalue.length != 19 ) {
+          return;
+      } else {
+          if (window.XMLHttpRequest) {
+              // code for IE7+, Firefox, Chrome, Opera, Safari
+              xmlhttp = new XMLHttpRequest();
+          } else {
+              // code for IE6, IE5
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+          }
+          xmlhttp.onreadystatechange = function() {
+            
+              if (this.readyState == 4 && this.status == 200) {
+                  /* document.getElementById("txtHint").innerHTML = this.responseText; */
+                  
+                  var foo = this.responseText;
+                  
+                  switch (foo.trim()){
+                    case "0":
+                    document.getElementById("valida").value = "0";
+                    break;
+                    case "1":
+                    Swal.fire({
+                      text: 'Please check your order number and try again later!', title: " ",
+                      footer: '<a class="clickable" onclick="notworkingcodesender()" style="cursor:pointer;" >Order number not working?</a>',
+                    });
+                    document.getElementById("valida").value = "1";
+                    break;
+                    case "2":
+                    
+                    Swal.fire({text:'Order number already used!', title: " ",});
+                    document.getElementById("valida").value = "2";
+                    break;
+                    case "3":
+                    
+                    Swal.fire({text:'Our team recommends to use Nuvana products for at least 7 days before reviewing!', title: " ",});
+                    document.getElementById("valida").value = "3";
+                    break;
+  
+                  }
+                  
+              }
+          };
+          
+          xmlhttp.open("GET","db_search.php?q="+this.value,true);
+          xmlhttp.send();
+      }
+  
+    });
+  
+  });
+
+
+function notworkingcodesender(){
+  swal.clickConfirm();
+  var inputVal = document.getElementById("ordernumber").value;
+  Swal.fire(   
+    'Sorry for the inconvenience',
+  'We will take care of this as soon as possible.<br> Please try again in the following 24 hours.'
+                  )
+                  //console.log(inputVal);
+requestcode(inputVal);
+}
+function requestcode(ordernumber) {
+    console.log(ordernumber);
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                
+            }
+        }
+        xmlhttp.open("GET", "requestcode.php?ordernumber="+ordernumber, true);
+        xmlhttp.send();    
 }

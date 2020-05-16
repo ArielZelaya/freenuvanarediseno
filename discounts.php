@@ -7,9 +7,9 @@
  echo $_SESSION["ordernumber"];
  echo $_SESSION["verification"]; */
  $email=$_POST['email'];
-/*  $fname=$_POST['fName'];
+$fname=$_POST['fName'];
  $lname=$_POST['lName'];
- $fullname = $fname." ".$lname; */
+ $fullname = $fname." ".$lname;
  $saddress1=$_POST['sAddress1'];
  $saddress2=$_POST['sAddress2'];
  $city=$_POST['city'];

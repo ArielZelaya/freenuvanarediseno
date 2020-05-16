@@ -52,6 +52,8 @@ $_SESSION["verification"]=20;
                                         travel-sized bottle of one of our best-selling products!
 									</h2>
 									<form  onsubmit="return firstForm()"  action="session.php" method="POST">
+									<!-- INPUT FOR VALIDATION CHECK -->
+									<input type="hidden" id="valida" name="valida" value="">
 										<div class="form-group">
 											<input type="text" class="form-control" id="fullname" name="fullname" aria-describedby="full name" placeholder="Full Name">
 											</div>
