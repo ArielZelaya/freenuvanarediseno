@@ -1,11 +1,13 @@
 <?php 
  session_start();
- 
-/*  echo $_SESSION["fullname"];
- echo $_SESSION["email"];
- echo $_SESSION["product"];
- echo $_SESSION["ordernumber"];
- echo $_SESSION["verification"]; */
+
+//echo $_SESSION["fullname"];
+// echo $_SESSION["email"];
+// echo $_SESSION["product"];
+// echo $_SESSION["ordernumber"];
+// echo $_SESSION["verification"];
+// echo "estas es el numero de estrellas :   ";
+// echo $_POST["stars"];
  $email=$_POST['email'];
 $fname=$_POST['fName'];
  $lname=$_POST['lName'];
@@ -24,7 +26,7 @@ $fname=$_POST['fName'];
  $metaprod = "Cider Cleanse - Detoxifying Cleanse";
  }
  $order= $_SESSION["ordernumber"];
- $rating =$_SESSION["stars"];
+ $rating =$_POST["stars"];
  $claimed=1;
  $date1 = date('Y-m-d H:m:s');
  $review= str_replace("'","’",$_POST["review"]);
@@ -101,10 +103,10 @@ first order at <a href = "http://www.nuvananutrition.com">nuvananutrition.com<a>
       //require_once('new_order.php');
           //change credentials to your own
           echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
-          $servername = "127.0.0.1";
-          $username = "marvinvi_wp11";
-          $password = "919293marvin";
-          $dbname = "marvinvi_nuvana_test";
+          $servername = "localhost";
+          $username = "root";
+          $password = "";
+          $dbname = "marvinvi_freenuvanaionos";
           if($verification==="completed"  && $order !='101-0101010-1010101' ){
             $_SESSION["verification"]=0;
         // Create connection
@@ -114,41 +116,38 @@ first order at <a href = "http://www.nuvananutrition.com">nuvananutrition.com<a>
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
             }
-            echo "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
+//            echo "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
          // prepare and bind prepared statements
-          $stmt = $conn->prepare("INSERT INTO nuvana (Product, OrderNumber,Rating,Review,Email,First_Name,Last_Name,Shipping1,Shipping2,City,St,Zip,Claim_Time)
-          VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
-echo "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"."</br>";
-echo $product ."<br>";
-echo $order ."<br>";
-echo $rating ."<br>";
+          $stmt = $conn->prepare("INSERT INTO nuvana (Product,OrderNumber,Rating,Review,Email,First_Name,Last_Name,Shipping1,Shipping2,City,St,Zip)
+          VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+//echo "</br> </br> </br> </br>";
+//echo $product ."<br>";
+//echo $order ."<br>";
+//echo $rating ."<br>";
+//
+//echo $review ."<br>";
+//echo $email ."<br>";
+//echo $fname ."<br>";
+//
+//echo $lname ."<br>";
+//echo $saddress1 ."<br>";
+//echo $saddress2 ."<br>";
+//echo $city ."<br>";
+//echo $state ."<br>";
+//echo $zip ."<br>";
+//echo $date1 ."<br>";
+//echo "YYYYYYYYYYYYYYYYUYYYYYYYYYYYYYY";
 
-echo $review ."<br>";
-echo $email ."<br>";
-echo $fname ."<br>";
-
-echo $lname ."<br>";
-echo $saddress1 ."<br>";
-echo $saddress2 ."<br>";
-echo $city ."<br>";
-echo $state ."<br>";
-echo $zip ."<br>";
-echo $date1 ."<br>";
-echo "YYYYYYYYYYYYYYYYUYYYYYYYYYYYYYY";
-
-
-
-
-
-          $stmt->bind_param("sssssssssssis", $product, $order, $rating , $review ,$email,$fname,$lname,$saddress1,$saddress2,$city,$state,$zip,$date1);
+$stmt->bind_param("sssssssssssi", $product, $order, $rating , $review ,$email,$fname,$lname,$saddress1,$saddress2,$city,$state,$zip);
           $stmt->execute();
+              $stmt->close();
           echo "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
           $fecha =date('Y-m-d');
-          $stmt2 = $conn->prepare("UPDATE Orders  SET Claimed=?, Claimeddate=? WHERE Code=?");
+          $stmt2 = $conn->prepare("UPDATE orders  SET Claimed=?, Claimeddate=? WHERE Code=?");
           $stmt2->bind_param("iss", $claimed,$fecha,$order);
           echo "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
           $stmt2->execute();
-          $stmt->close();
+
           $stmt2->close();
           $conn->close();
          // Create_order_shipstation($order,$fullname,$email,$saddress1,$saddress2, $city,$state,$zip);
@@ -317,9 +316,9 @@ echo "YYYYYYYYYYYYYYYYUYYYYYYYYYYYYYY";
 
 
 $server = "127.0.0.1";
-$user_name = "marvinvi_wp11";
-$password = "919293marvin";
-$db = "marvinvi_nuvana_test";
+$user_name = "root";
+$password = "";
+$db = "marvinvi_freenuvanaionos";
 
 // Create connection
 $conn = new mysqli($server, $user_name, $password, $db);
