@@ -1,5 +1,5 @@
 <section class="container-fluid  footer-bottom">
-
+<div >
                     <img src="src/img/log-blanco_pequeno.png" alt="nuvana logo white" style="width: 200px">
                     
             <p style="color:#ffffff; margin-top:20px;">Copyright © <?php echo date("Y");?> Nuvana Nutrition. All rights reserved.</p> 
@@ -8,4 +8,5 @@
 <script>
         $("#ordernumber").inputmask({"mask": "999-9999999-9999999"});
 </script>
+</div>
   </section> 
