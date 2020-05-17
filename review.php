@@ -1,27 +1,30 @@
 <?php 
  session_start();
-
-/*  echo $_SESSION["fullname"];
- echo $_SESSION["email"];
- echo $_SESSION["product"];
- echo $_SESSION["ordernumber"];
- echo $_SESSION["verification"]; */
+//echo "ARRIBA";
+// echo $_SESSION["fullname"];
+// echo $_SESSION["email"];
+// echo $_SESSION["product"];
+// echo $_SESSION["ordernumber"];
+// echo $_SESSION["verification"];
  if ($_SESSION["verification"]==="verified") { 
   $_SESSION["verification"]="completed"; 
  } else {
    // Finally, destroy the session.
  session_destroy();
    header("Location: index.php", true, 301);
- } 
+ }
+// echo "this is order number";
+// echo $_SESSION["ordernumber"];
 ?>
 <!doctype html><html lang="en"><head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- 		SWEETALERT -->
+  
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
-<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.16/dist/jquery.mask.min.js"></script>
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -30,16 +33,14 @@
 		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<!--    <link href="src/css/bootstrap.min.css" rel="stylesheet">-->
+
+
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 			<!-- OWN CSS -->
 			<link rel="stylesheet" href="src/css/style.css">
 
-    <!-- TOol TIP -->
-    <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 				<title>New page!</title>
 			</head>
@@ -51,7 +52,7 @@
 					<div class="container-fluid review">
 					<div class="row">
             <div class="col-md-8 offset-md-2 text-center">
-            <div class="container form-container">
+            <div id="form-shadowed" class="container form-container">
               <div class="container h2-review">
             <h2 class="heading-form">Please give us your  <br/>honest feedback.</h2>
             <div class="empare">  
@@ -102,13 +103,13 @@
           <textarea id="txtarea" name="review" class="textareastyle" rows="10" style="margin-top: 25px;"></textarea>
   </div>
   <div id="copy-tab" class="tab copy-tab">
-   <p class="form-question text-center" style="font-size: 16px;">Here's what you said:</p>
+   <p class="form-question text-center" style="font-size: 16px;color:#000000"                    >Here's what you said:</p>
   <textarea disabled class="textareastyle" id="disabledtxtarea" rows="7" style="margin-top: 25px;">
         <?php echo $_SESSION["review"]?>
         </textarea>
 <input type="text" name="review"  style="opacity: 0.0;
   filter: alpha(opacity=00); /* For IE8 and earlier */" id="myInput"> 
-  <p class="form-question text-center">
+  <p class="form-question text-center" style="color:#000000">
           Click to copy your review, then share it on Amazon.* Don’t worry, you won’t lose your place in the process.
         </p>
         <!-- Start of 3 Buttons -->
@@ -135,7 +136,7 @@
         <!-- End of 3 Buttons --> 
   </div>
   <div class="tab">
-  <p class="form-question text-center">
+  <p class="form-question text-center" style="color:#000000">
           Where are we sending your free bottle?
         </p>
         <br>
@@ -145,22 +146,23 @@
           <input style="width:100%;" type="text" oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '').replace(/(\.*)\./g, '$1');" id="fName" name="fName" class="amazon2 underline"  placeholder="First Name">
         </div>
         <div class="col-md-6">
-          <input style="width:100%;" type="text" oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '').replace(/(\.*)\./g, '$1');" id="lName" name="lName" class="amazon2 underline"  placeholder="Last Name" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+          <input style="width:100%;" type="text" oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '').replace(/(\.*)\./g, '$1');" id="lName" name="lName" class="amazon2 underline"  placeholder="Last Name" >
         </div>
         </div>
         <div id="locationField" >
           <input style="width:100%;" type="text" id="sAddress1" name="sAddress1" class="amazon2 underline"  placeholder="Address 1" onFocus="geolocate()">
       </div>
         <input style="width:100%;" type="text" id="sAddress2" name="sAddress2" class="amazon2 underline"  placeholder="Address 2" title="Add unit number if applicable" data-toggle="tooltip" data-placement="top" rel="txtTooltip">
-      <div class="row">
+        <script>
+            $(document).ready(function() {
+                $('input[rel="txtTooltip"]').tooltip();
+            });
+        </script>
+        <div class="row">
 
 
 <!--          <input style="width:100%;" type="text" name="sAddress2" class="amazon2 underline"  placeholder="Address Line 2" title="Add unit number if applicable" data-toggle="tooltip" data-placement="top" rel="txtTooltip">-->
-          <script>
-              $(document).ready(function() {
-                  $('input[rel="txtTooltip"]').tooltip();
-              });
-              </script>
+        
 
 
         <div class="col-md-4">
@@ -266,9 +268,6 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
 
 
-$( function() {
-    $( document ).tooltip();
-} );
 
 
 function showTab(n) {
@@ -306,11 +305,11 @@ if(document.getElementById("star-5").checked && n==1){
     x[n].style.display = "block";
   } */
   //... and fix the Previous/Next buttons:
-  if (n == 0) {
+  /* if (n == 0) {
     document.getElementById("prevBtn").style.display = "none";
   } else {
     document.getElementById("prevBtn").style.display = "inline";
-  }
+  } */
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "Submit";
   } else {
@@ -359,8 +358,42 @@ y.splice(1,1);
   // if you have reached the end of the form...
   if (currentTab >= x.length) {
     // ... the form gets submitted:
-    document.getElementById("regForm").submit();
+var form_shadow = document.getElementById("form-shadowed");
+      form_shadow.style.opacity="0";
+      let timerInterval
+Swal.fire({
+  title: 'Submiting form',
+  
+  timer: 1800,
+  timerProgressBar: true,
+  onBeforeOpen: () => {
+    Swal.showLoading()
+    timerInterval = setInterval(() => {
+      const content = Swal.getContent()
+      if (content) {
+        const b = content.querySelector('b')
+        if (b) {
+          b.textContent = Swal.getTimerLeft()
+        }
+      }
+    }, 100)
+  },
+  onClose: () => {
+    clearInterval(timerInterval)
+  }
+}).then((result) => {
+  /* Read more about handling dismissals below */
+  if (result.dismiss === Swal.DismissReason.timer) {
+    console.log('I was closed by the timer')
+  }
+})
+var myVar = setInterval(myTimer, 1800);
+
+function myTimer() {
+  document.getElementById("regForm").submit();
     return false;
+} 
+    
   }
   // Otherwise, display the correct tab:
   showTab(currentTab);
@@ -382,7 +415,7 @@ t.splice(1,1);
     console.log("Not checked");
     var x = t;
   }else{
-    console.log(" checked");
+
     var x = z;
   }
   y = x[currentTab].getElementsByTagName("input");
@@ -390,8 +423,7 @@ t.splice(1,1);
   for (i = 0; i < y.length; i++) {
     // If a field is empty...
     if (y[i].value == "" && y[i].id != "sAddress2") {
-      console.log(y[i].id);
-      console.log("Campo vacio");
+
       // add an "invalid" class to the field:
       y[i].className += " invalid";
       // and set the current valid status to false
@@ -408,11 +440,28 @@ t.splice(1,1);
 function fixStepIndicator(n) {
   // This function removes the "active" class of all steps...
   var i, x = document.getElementsByClassName("step");
+  console.log(x);
+  console.log(x.length);
   for (i = 0; i < x.length; i++) {
     x[i].className = x[i].className.replace(" active", "");
   }
   //... and adds the "active" class on the current step:
+  console.log("steper"+n);
+  if(!document.getElementById("star-5").checked && n==1){
+    x[n].className = " active";
+  }
   x[n].className += " active";
 }
 </script>
+
+
+
+//echo $_SESSION["fullname"];
+//echo $_SESSION["email"];
+//echo $_SESSION["product"];
+//echo $_SESSION["ordernumber"];
+//echo $_SESSION["verification"];
+
+
+
 										</html>

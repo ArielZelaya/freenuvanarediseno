@@ -4,6 +4,10 @@
   top: 0;
   width: 100%
 }
+.tooltip-inner {    max-width: 350px; 
+     /* If max-width does not work, try using width instead */  
+       width: 350px !important;}
+.tooltip {    font-size: 20px  !important;}
 
 /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
 .sticky + .content {
