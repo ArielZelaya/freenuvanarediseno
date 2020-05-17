@@ -2,7 +2,7 @@
 $q = ($_GET['q']);
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $dbname = "marvinvi_freenuvanaionos";
 $date = date('Y-m-d h:i:s', time());
 // Create connection
