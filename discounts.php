@@ -56,7 +56,7 @@ $verification=$_SESSION["verification"];
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 			<!-- OWN CSS -->
 			<link rel="stylesheet" href="src/css/style.css" >
-				<title>New page!</title>
+				
 			</head>
 			<body>
 				<?php
@@ -100,13 +100,12 @@ first order at <a href = "http://www.nuvananutrition.com">nuvananutrition.com<a>
       <?php 
       use PHPMailer\PHPMailer\PHPMailer;
       use PHPMailer\PHPMailer\Exception;
-      //require_once('new_order.php');
+      require_once('new_order.php');
           //change credentials to your own
-          echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
           $servername = "localhost";
-          $username = "root";
-          $password = "";
-          $dbname = "marvinvi_freenuvanaionos";
+          $username = "marvinvi_wp11";
+          $password = "919293marvin";
+          $dbname = "marvinvi_nuvana_test";
           if($verification==="completed"  && $order !='101-0101010-1010101' ){
             $_SESSION["verification"]=0;
         // Create connection
@@ -116,41 +115,23 @@ first order at <a href = "http://www.nuvananutrition.com">nuvananutrition.com<a>
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
             }
-//            echo "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
-         // prepare and bind prepared statements
-          $stmt = $conn->prepare("INSERT INTO nuvana (Product,OrderNumber,Rating,Review,Email,First_Name,Last_Name,Shipping1,Shipping2,City,St,Zip)
-          VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
-//echo "</br> </br> </br> </br>";
-//echo $product ."<br>";
-//echo $order ."<br>";
-//echo $rating ."<br>";
-//
-//echo $review ."<br>";
-//echo $email ."<br>";
-//echo $fname ."<br>";
-//
-//echo $lname ."<br>";
-//echo $saddress1 ."<br>";
-//echo $saddress2 ."<br>";
-//echo $city ."<br>";
-//echo $state ."<br>";
-//echo $zip ."<br>";
-//echo $date1 ."<br>";
-//echo "YYYYYYYYYYYYYYYYUYYYYYYYYYYYYYY";
 
-$stmt->bind_param("sssssssssssi", $product, $order, $rating , $review ,$email,$fname,$lname,$saddress1,$saddress2,$city,$state,$zip);
+         // prepare and bind prepared statements
+          $stmt = $conn->prepare("INSERT INTO nuvana (Product,OrderNumber,Rating,Review,Email,First_Name,Last_Name,Shipping1,Shipping2,City,St,Zip,Claim_Time)
+          VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+$stmt->bind_param("sssssssssssis", $product, $order, $rating , $review ,$email,$fname,$lname,$saddress1,$saddress2,$city,$state,$zip,$date1);
           $stmt->execute();
               $stmt->close();
-          echo "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
+        
           $fecha =date('Y-m-d');
           $stmt2 = $conn->prepare("UPDATE orders  SET Claimed=?, Claimeddate=? WHERE Code=?");
           $stmt2->bind_param("iss", $claimed,$fecha,$order);
-          echo "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
+         
           $stmt2->execute();
 
           $stmt2->close();
           $conn->close();
-         // Create_order_shipstation($order,$fullname,$email,$saddress1,$saddress2, $city,$state,$zip);
+         Create_order_shipstation($order,$fullname,$email,$saddress1,$saddress2, $city,$state,$zip);
           /* WORDPRESS SECTION FOR REVIEWS*/
         require 'phpmailer/PHPMailer/src/Exception.php';
         require 'phpmailer/PHPMailer/src/PHPMailer.php';
@@ -315,10 +296,10 @@ $stmt->bind_param("sssssssssssi", $product, $order, $rating , $review ,$email,$f
 //        DATA REPETED:
 
 
-$server = "127.0.0.1";
-$user_name = "root";
-$password = "";
-$db = "marvinvi_freenuvanaionos";
+$server = "localhost";
+$user_name = "marvinvi_wp11";
+$password = "919293marvin";
+$db = "marvinvi_nuvana_test";
 
 // Create connection
 $conn = new mysqli($server, $user_name, $password, $db);
@@ -354,7 +335,7 @@ if (mysqli_num_rows($result) > 1) {
         $mailrepeat->Body = $body_repeted;
         $mailrepeat->AddAddress("ariel@mvagency.co");
         $mailrepeat->AddAddress("jose@mvagency.co");
-        $mailrepeat->AddAddress("diego@mvagency.co");
+        /* $mailrepeat->AddAddress("diego@mvagency.co"); */
         //send the message, check for errors
         if (!$mailrepeat->send()) {
         } else { 
@@ -391,7 +372,7 @@ $conn->close();
         $mail3->Body = $body;
         $mail3->AddAddress("ariel@mvagency.co");
         $mail3->AddAddress("jose@mvagency.co");
-        $mail3->AddAddress("diego@mvagency.co");
+        /* $mail3->AddAddress("diego@mvagency.co"); */
         //send the message, check for errors
         if (!$mail3->send()) {
         } else { 

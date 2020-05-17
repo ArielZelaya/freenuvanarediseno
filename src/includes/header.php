@@ -1,4 +1,6 @@
 <div class="container-fluid nav-bar fixed-header" >
+<link rel="shortcut icon" type="image/png" href="src/img/favicon.jpg"/>
+<title>Nuvana Nutrition</title>
 <script src="src/js/scripts.js" ></script>
                <div class="row">
                <div class="col-md-3 logo-nav">
