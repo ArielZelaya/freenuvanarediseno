@@ -120,25 +120,28 @@ first order at <a href = "http://www.nuvananutrition.com">nuvananutrition.com<a>
          // prepare and bind prepared statements
           $stmt = $conn->prepare("INSERT INTO nuvana (Product,OrderNumber,Rating,Review,Email,First_Name,Last_Name,Shipping1,Shipping2,City,St,Zip)
           VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
-//echo "</br> </br> </br> </br>";
-//echo $product ."<br>";
-//echo $order ."<br>";
-//echo $rating ."<br>";
-//
-//echo $review ."<br>";
-//echo $email ."<br>";
-//echo $fname ."<br>";
-//
-//echo $lname ."<br>";
-//echo $saddress1 ."<br>";
-//echo $saddress2 ."<br>";
-//echo $city ."<br>";
-//echo $state ."<br>";
-//echo $zip ."<br>";
-//echo $date1 ."<br>";
-//echo "YYYYYYYYYYYYYYYYUYYYYYYYYYYYYYY";
+echo "</br> </br> </br> </br>";
+echo $product ."<br>";
+echo $order ."<br>";
+echo $rating ."<br>";
 
-$stmt->bind_param("sssssssssssi", $product, $order, $rating , $review ,$email,$fname,$lname,$saddress1,$saddress2,$city,$state,$zip);
+echo $review ."<br>";
+echo $email ."<br>";
+echo $fname ."<br>";
+
+echo $lname ."<br>";
+echo $saddress1 ."<br>";
+echo $saddress2 ."<br>";
+echo $city ."<br>";
+echo $state ."<br>";
+echo $zip ."<br>";
+echo $date1 ."<br>";
+              echo $product ."<br>";
+echo $order ."<br>";
+echo $rating ."<br>";
+echo "YYYYYYYYYYYYYYYYUYYYYYYYYYYYYYY";
+
+$stmt->bind_param("sssssssssssi", $product, $order, $rating ,$review ,$email,$fname,$lname,$saddress1,$saddress2,$city,$state,$zip);
           $stmt->execute();
               $stmt->close();
           echo "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
