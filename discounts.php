@@ -32,11 +32,11 @@ $fname=$_POST['fName'];
  $review= str_replace("'","’",$_POST["review"]);
 
 $verification=$_SESSION["verification"];
- if($_SESSION["verification"]=="completed"){
+ /* if($_SESSION["verification"]=="completed"){
  }else{
      session_destroy();
     header("Location: index.php", true, 301); 
- }
+ } */
 ?>
 <!doctype html><html lang="en"><head>
 <!-- Required meta tags -->
@@ -77,13 +77,13 @@ $verification=$_SESSION["verification"];
             <h2 class="heading-form">We are processing your free bottle</h2>
             <div class="internal-div">
             <h1 class="text-center sanscondensed" style="font-weight: 800; font-family: 'Alegreya Sans', sans-serif;font-size: 40px; padding-top: 35px; margin-bottom: -5px;">GET THREE FREE BOTTLES <br> OF YOUR CHOICE</h1>
-         <h3 class="text-center" style="overflow-wrap: break-word; margin-top:40px;">Share your experience using our products through a video
+         <h5 class="text-center" style="overflow-wrap: break-word; margin-top:40px;">Share your experience using our products through a video <br>
 testimonial to receive 3 FREE full-sized bottles of your choice.<br><br>
 5 of these testimonials will be selected to receive <br>an additional YEAR
 SUPPLY of the their favorite product!<br><br>
 Simply copy and paste the link below<br> and open on your smart phone for
 further instructions.<br>
-<a href = "https://app.videopeel.com/k2pezuzi">https://app.videopeel.com/k2pezuzi</a></h3>
+<a href = "https://app.videopeel.com/k2pezuzi">https://app.videopeel.com/k2pezuzi</a></h5>
          <!--IMAGE  CENTER DIV -->
          <div class=" text-center">
          <!-- AMAZON BUTTON -->

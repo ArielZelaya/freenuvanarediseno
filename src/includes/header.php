@@ -45,7 +45,7 @@
 </style>
                <div class="row">
                <div id="logo-registered" class="col-md-3 col-6 logo-nav">
-               <a  href="#">
+               <a  href="https://nuvananutrition.com/" target="_blank">
                <img class="logo-nav" src="src/img/small_logo.png" alt="">
                </a>
                </div> 
