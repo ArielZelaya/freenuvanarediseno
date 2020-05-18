@@ -153,8 +153,8 @@
       </div>
       <input style="width:100%;" type="text" id="sAddress2" name="sAddress2" class="amazon2 underline"  placeholder="Address 2" title="Add unit number if applicable" data-toggle="tooltip" data-placement="top" rel="txtTooltip">
 
-      <input style="width:100%;" type="text" id="route" name="sAddress2" class="amazon2 underline"  placeholder="Route" title="Add unit number if applicable" data-toggle="tooltip" data-placement="top" rel="txtTooltip" hidden>
-      <input style="width:100%;" type="text" id="street_number" name="sAddress2" class="amazon2 underline"  placeholder="Street Number " title="Add unit number if applicable" data-toggle="tooltip" data-placement="top" rel="txtTooltip" hidden>
+      <input style="width:100%;" type="text" id="route" name="route" class="amazon2 underline"  placeholder="Route" title="Add unit number if applicable" data-toggle="tooltip" data-placement="top" rel="txtTooltip" hidden>
+      <input style="width:100%;" type="text" id="street_number" name="stree_number" class="amazon2 underline"  placeholder="Street Number " title="Add unit number if applicable" data-toggle="tooltip" data-placement="top" rel="txtTooltip" hidden>
 
       <script>
             $(document).ready(function() {
@@ -227,7 +227,7 @@
                         street_number: 'short_name',
                         route: 'long_name',
                         locality: 'long_name',
-                        administrative_area_level_1: 'long_name',
+                        administrative_area_level_1: 'short_name',
                         postal_code: 'short_name'
 
                     };
