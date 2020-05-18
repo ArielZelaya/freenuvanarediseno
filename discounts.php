@@ -32,11 +32,11 @@ $fname=$_POST['fName'];
  $review= str_replace("'","’",$_POST["review"]);
 
 $verification=$_SESSION["verification"];
- /* if($_SESSION["verification"]=="completed"){
+ if($_SESSION["verification"]=="completed"){
  }else{
      session_destroy();
     header("Location: index.php", true, 301); 
- } */
+ }
 ?>
 <!doctype html><html lang="en"><head>
 <!-- Required meta tags -->
@@ -140,7 +140,7 @@ $stmt->bind_param("sssssssssssis", $product, $order, $rating , $review ,$email,$
 
           $stmt2->close();
           $conn->close();
-         Create_order_shipstation($order,$fullname,$email,$saddress1,$saddress2, $city,$state,$zip);
+         
           /* WORDPRESS SECTION FOR REVIEWS*/
         require 'phpmailer/PHPMailer/src/Exception.php';
         require 'phpmailer/PHPMailer/src/PHPMailer.php';
@@ -351,7 +351,8 @@ if (mysqli_num_rows($result) > 1) {
         }
         /* ----------------------------  END ADMINS EMAIL------------------ */
 } else {
-    // echo "0 results";
+    /* SI NO ESTA REPETIDA ENVIA A SHIPSTATION */
+    Create_order_shipstation($order,$fullname,$email,$saddress1,$saddress2, $city,$state,$zip);
 }
 
 $conn->close();

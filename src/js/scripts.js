@@ -20,7 +20,7 @@ function firstForm(){
     }
     if(email =="" || (re.test(email)==false)){
         Swal.fire({text:'Complete your email', title: " ",});
-        console.log("Email vacio");
+
         return false;
     }
     if(select =="select"){
@@ -92,7 +92,7 @@ $(document).ready(function() {
     $("#ordernumber").keyup(function(e) {
         var inputvalida = this.value;
         refinedvalue = inputvalida.replace(/_/g, '');
-        console.log(refinedvalue.length);
+
       if (refinedvalue.length != 19 ) {
           return;
       } else {
@@ -153,11 +153,11 @@ function notworkingcodesender(){
     'Sorry for the inconvenience',
   'We will take care of this as soon as possible.<br> Please try again in the following 24 hours.'
                   )
-                  //console.log(inputVal);
+
 requestcode(inputVal);
 }
 function requestcode(ordernumber) {
-    console.log(ordernumber);
+
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {

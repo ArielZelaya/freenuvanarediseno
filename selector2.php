@@ -9,7 +9,7 @@
        }
         else{
           $_SESSION['message'] = "<h6 class='text-center' style='margin-top:10px;color: darkred'>Wrong password or user</h6>";
-          header("Location: login2.php", true, 301);
+          header("Location: login.php", true, 301);
           exit();
           
       }
