@@ -62,11 +62,11 @@ else{
 
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.4/js/dataTables.responsive.min.js"></script>
-<!-- RESPONSIVE DATATABLE -->
 
+<!-- RESPONSIVE DATATABLE -->
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.4/js/dataTables.responsive.min.js"></script> -->
     <!-- NEW FORM -->
 
     
@@ -97,9 +97,9 @@ else{
 
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "marvinvi_freenuvanaionos";
+$username = "marvinvi_wp11";
+$password = "919293marvin";
+$dbname = "marvinvi_nuvana_test";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -166,8 +166,6 @@ $conn->close();
     <script>
     $(document).ready(function() {
     $('#datatbl').DataTable({
-     
-      "pageLength": 50,
     "order": [0,'desc'],
     "rowCallback": function( row, data, index ) {
                                 var allData = this.api().column(1).data().toArray();
