@@ -1,9 +1,9 @@
 <?php
 $q = ($_GET['q']);
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "marvinvi_freenuvanaionos";
+$username = "marvinvi_wp11";
+$password = "919293marvin";
+$dbname = "marvinvi_nuvana_test";
 $date = date('Y-m-d h:i:s', time());
 // Create connection
 $conn = new mysqli($servername, $username, $password,$dbname);
@@ -17,7 +17,7 @@ if ($conn->query($sql) === TRUE) {
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
     } */
-    $query = mysqli_query($conn, "SELECT code,CodeDate,Claimed FROM Orders WHERE Code='$q'");
+    $query = mysqli_query($conn, "SELECT code,CodeDate,Claimed FROM orders WHERE Code='$q'");
     if (!$query)
     {
         die('Error: ' . mysqli_error($con));

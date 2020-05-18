@@ -1,9 +1,19 @@
+.burger{
+  display: none;
+}
+#logo-registered{
+  padding-top: 10px;
+}
 /* The sticky class is added to the header with JS when it reaches its scroll position */
 .sticky {
   position: fixed;
   top: 0;
   width: 100%
 }
+.tooltip-inner {    max-width: 350px; 
+     /* If max-width does not work, try using width instead */  
+       width: 350px !important;}
+.tooltip {    font-size: 20px  !important;}
 
 /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
 .sticky + .content {
@@ -119,7 +129,7 @@ body{
     padding: 40px;
     width: 90%;
     min-width: 300px;
-    max-height: 766px;
+    /* max-height: 766px; */
   }
   .empare{
     margin: 35px auto;
@@ -329,7 +339,7 @@ padding: 15px 80px 15px 80px;
     justify-content: center;
 }
 .section-banner{
-  margin-top: 79px;
+  /* margin-top: 79px; */
 }
 .left-section-banner{
     font-family: 'Alegreya Sans', sans-serif;
@@ -477,6 +487,12 @@ p.footer-text{
 /* IPAD */
 
 @media (max-width: 768px) { 
+/*   #datatbl{
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+
+  } */
     .text-review{
         text-align: left;
         padding: 0 0px 0 0px;
@@ -502,6 +518,9 @@ p.footer-text{
 }
 /* MOBIL */
 @media (max-width: 576px) { 
+  .burger{
+    display: inline;
+  }
   .container-fluid.review{
     padding-left: 5px;
     padding-right: 5px;
@@ -593,5 +612,8 @@ padding: 100px 15px 100px 15px;
     }
     .testimonial-3{
         display: none ;
+    }
+    .container-fluid.nav-bar.fixed-header{
+      padding: 15px 20px 15px 20px;
     }
 }
