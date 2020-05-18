@@ -131,6 +131,7 @@ $stmt->bind_param("sssssssssssis", $product, $order, $rating , $review ,$email,$
 
           $stmt2->close();
           $conn->close();
+
          Create_order_shipstation($order,$fullname,$email,$saddress1,$saddress2, $city,$state,$zip);
           /* WORDPRESS SECTION FOR REVIEWS*/
         require 'phpmailer/PHPMailer/src/Exception.php';
