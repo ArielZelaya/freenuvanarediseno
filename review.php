@@ -151,8 +151,12 @@
         <div id="locationField" >
           <input style="width:100%;" type="text" id="sAddress1" name="sAddress1" class="amazon2 underline"  placeholder="Address 1" onFocus="geolocate()">
       </div>
-        <input style="width:100%;" type="text" id="sAddress2" name="sAddress2" class="amazon2 underline"  placeholder="Address 2" title="Add unit number if applicable" data-toggle="tooltip" data-placement="top" rel="txtTooltip">
-        <script>
+      <input style="width:100%;" type="text" id="sAddress2" name="sAddress2" class="amazon2 underline"  placeholder="Address 2" title="Add unit number if applicable" data-toggle="tooltip" data-placement="top" rel="txtTooltip">
+
+      <input style="width:100%;" type="text" id="route" name="sAddress2" class="amazon2 underline"  placeholder="Route" title="Add unit number if applicable" data-toggle="tooltip" data-placement="top" rel="txtTooltip" hidden>
+      <input style="width:100%;" type="text" id="street_number" name="sAddress2" class="amazon2 underline"  placeholder="Street Number " title="Add unit number if applicable" data-toggle="tooltip" data-placement="top" rel="txtTooltip" hidden>
+
+      <script>
             $(document).ready(function() {
                 $('input[rel="txtTooltip"]').tooltip();
             });
@@ -163,19 +167,18 @@
 <!--          <input style="width:100%;" type="text" name="sAddress2" class="amazon2 underline"  placeholder="Address Line 2" title="Add unit number if applicable" data-toggle="tooltip" data-placement="top" rel="txtTooltip">-->
         
 
-
         <div class="col-md-4">
-          <input style="width:100%;" type="text" id="city" name="city" class="amazon2 underline"  placeholder="City">
+          <input style="width:100%;" type="text" id="locality" name="city" class="amazon2 underline"  placeholder="City">
         </div>
         <div class="col-md-4">
-          <select id="state" name="state" class="amazon2 select underline" style="padding-bottom:1px; border-bottom:1px #000 solid; max-width:100%;" >
+          <select id="administrative_area_level_1" name="state" class="amazon2 select underline" style="padding-bottom:1px; border-bottom:1px #000 solid; max-width:100%;" >
             
-            <?php include("src/includes/states.php");?> <!--Lista de Estados (src/includes/states)-->
-            
+            <?php include("src/includes/states.php");?> Lista de Estados (src/includes/states)
+
           </select>
         </div>
         <div class="col-md-4">
-          <input  style="width:100%;" type="text" id="zip" name="zip"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="amazon2 underline"   pattern=".{5,5}"maxlength="5" placeholder="Zip">
+          <input  style="width:100%;" type="text" id="postal_code" name="zip"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="amazon2 underline"   pattern=".{5,5}"maxlength="5" placeholder="Zip">
         </div>
       </div>
       <!-- <input  type="submit" name="send" value="Submit" required/> -->
@@ -224,9 +227,9 @@
                         street_number: 'short_name',
                         route: 'long_name',
                         locality: 'long_name',
-                        administrative_area_level_1: 'short_name',
-                        country: 'long_name',
+                        administrative_area_level_1: 'long_name',
                         postal_code: 'short_name'
+
                     };
 
                     function initAutocomplete() {
@@ -240,8 +243,61 @@
 
                         // When the user selects an address from the drop-down, populate the
                         // address fields in the form.
-                        // autocomplete.addListener('place_changed', fillInAddress);
+                        autocomplete.addListener('place_changed', fillInAddress);
+
                     }
+
+                    function fillInAddress() {
+                        console.log("entra en el fill address ");
+                        // Get the place details from the autocomplete object.
+                        var place = autocomplete.getPlace();
+                        var address_data;
+
+                        // for (var component in componentForm) {
+                        //     document.getElementById(component).value = '';
+                        //     // document.getElementById(component).disabled = false;
+                        //     console.log("funcion  get element by id");
+                        // }
+                        // console.log("salio de funcion get element by id ");
+                        // Get each component of the address from the place details,
+                        // and then fill-in the corresponding field on the form.
+                        for (var i = 0; i < place.address_components.length; i++) {
+
+                            console.log("Address component : ");
+                            console.log(addressType);
+                            console.log(place.address_components.length);
+                            var addressType = place.address_components[i].types[0];
+                            if (componentForm[addressType]) {
+                                var val = place.address_components[i][componentForm[addressType]];
+                                // var address1_route;
+
+                                if (addressType == "street_number"){
+                                    var address1_street_number = place.address_components[i][componentForm[addressType]];
+
+                                }else if (addressType=="route"){
+                                    var address1_route = place.address_components[i][componentForm[addressType]];
+
+                                }
+
+                                // console.log("valor de cada address type");
+                                // console.log(val);
+                                document.getElementById(addressType).value = val;
+
+                            }
+                        }
+
+                        if (!address1_street_number){
+
+                            document.getElementById("sAddress1").value =address1_route;
+                        }
+                        else{
+
+                            document.getElementById("sAddress1").value = address1_street_number +" "+ address1_route;
+                        }
+
+
+                    }
+
                     function geolocate() {
                         if (navigator.geolocation) {
                             navigator.geolocation.getCurrentPosition(function(position) {
