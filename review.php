@@ -350,8 +350,7 @@ y.splice(1,1);
     }
   if (n == 1 && !validateForm()) return false;
   // Hide the current tab:
-  console.log(z);
-  console.log(x);
+  
   x[currentTab].style.display = "none";
   // Increase or decrease the current tab by 1:
   currentTab = currentTab + n;
@@ -384,7 +383,7 @@ Swal.fire({
 }).then((result) => {
   /* Read more about handling dismissals below */
   if (result.dismiss === Swal.DismissReason.timer) {
-    console.log('I was closed by the timer')
+    
   }
 })
 var myVar = setInterval(myTimer, 1800);
@@ -412,7 +411,7 @@ for (let i = 0; i<z.length;i++){
 t.splice(1,1);
   var x, y, i, valid = true;
   if(!document.getElementById("star-5").checked){
-    console.log("Not checked");
+   
     var x = t;
   }else{
 
@@ -422,12 +421,55 @@ t.splice(1,1);
   // A loop that checks every input field in the current tab:
   for (i = 0; i < y.length; i++) {
     // If a field is empty...
-    if (y[i].value == "" && y[i].id != "sAddress2") {
-
-      // add an "invalid" class to the field:
-      y[i].className += " invalid";
-      // and set the current valid status to false
+    if ((currentTab==1 && !document.getElementById("star-5").checked) || currentTab==2) {
+      /* SHIPPING VALIDATON */
+    /* GETTING VALUES FROM SHIPPING INPUTS  Address2 is optional */
+    var shipping_email = document.getElementById("amazon-ordermail");
+    var fName = document.getElementById("fName");
+    var lName = document.getElementById("lName");
+    var sAddress1 = document.getElementById("sAddress1");
+    var city = document.getElementById("city");
+    var state = document.getElementById("state");
+    var zip = document.getElementById("zip");
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; 
+    /* VALIDATIONS FOR SHIPPING INPUTS */
+    if(zip.value =="" || city.value.length<5){
+      Swal.fire({text:'Complete your zip code', title: " ",});
+      zip.className += " invalid";
       valid = false;
+      }else{zip.classList.remove("invalid");}
+    if(state.value ==="select"){
+      console.log("selected");
+      Swal.fire({text:'Choose a state', title: " ",});
+      state.className += " invalid";
+      valid = false;
+    }
+    if(city.value =="" || city.value.length<4){
+      Swal.fire({text:'Complete your city', title: " ",});
+      city.className += " invalid";
+      valid = false;
+    }else{city.classList.remove("invalid");}
+    if(sAddress1.value =="" || lName.value.length <= 5  ){
+      Swal.fire({text:'Complete your address 1', title: " ",});
+      sAddress1.className += " invalid";
+      valid = false;
+    }else{city.classList.remove("invalid");}
+    if(lName.value =="" || lName.value.length <= 3  ){
+      Swal.fire({text:'Complete your last name', title: " ",});
+      lName.className += " invalid";
+      valid = false;
+    }else{lName.classList.remove("invalid");}
+    if(fName.value =="" || fName.value.length <= 3 ){
+      Swal.fire({text:'Complete your first name', title: " ",});
+      fName.className += " invalid";
+      valid = false;
+    }else{fName.classList.remove("invalid");}
+    if(shipping_email.value =="" || (re.test(shipping_email.value)==false)){
+      Swal.fire({text:'Complete your email', title: " ",});
+      shipping_email.className += " invalid";
+      valid = false;
+    }else{shipping_email.classList.remove("invalid");}
+      /* SHIPPING VALIDATON */
     }
   }
   // If the valid status is true, mark the step as finished and valid:
@@ -440,13 +482,12 @@ t.splice(1,1);
 function fixStepIndicator(n) {
   // This function removes the "active" class of all steps...
   var i, x = document.getElementsByClassName("step");
-  console.log(x);
-  console.log(x.length);
+  
   for (i = 0; i < x.length; i++) {
     x[i].className = x[i].className.replace(" active", "");
   }
   //... and adds the "active" class on the current step:
-  console.log("steper"+n);
+  
   if(!document.getElementById("star-5").checked && n==1){
     x[n].className = " active";
   }
@@ -454,14 +495,4 @@ function fixStepIndicator(n) {
 }
 </script>
 
-
-
-//echo $_SESSION["fullname"];
-//echo $_SESSION["email"];
-//echo $_SESSION["product"];
-//echo $_SESSION["ordernumber"];
-//echo $_SESSION["verification"];
-
-
-
-										</html>
+</html>

@@ -100,7 +100,9 @@ first order at <a href = "http://www.nuvananutrition.com">nuvananutrition.com<a>
       <?php 
       use PHPMailer\PHPMailer\PHPMailer;
       use PHPMailer\PHPMailer\Exception;
-      require_once('new_order.php');
+      echo "BEFORE FUNCTION";
+        require_once('new_order.php');
+        echo "AFTER FUNCTION";
           //change credentials to your own
           $servername = "localhost";
           $username = "marvinvi_wp11";
