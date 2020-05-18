@@ -480,12 +480,14 @@ t.splice(1,1);
     var fName = document.getElementById("fName");
     var lName = document.getElementById("lName");
     var sAddress1 = document.getElementById("sAddress1");
-    var city = document.getElementById("city");
-    var state = document.getElementById("state");
-    var zip = document.getElementById("zip");
+    var city = document.getElementById("locality");
+    var state = document.getElementById("administrative_area_level_1");
+    var zip = document.getElementById("postal_code");
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; 
     /* VALIDATIONS FOR SHIPPING INPUTS */
-    if(zip.value =="" || city.value.length<5){
+    console.log(zip.value);
+    console.log(zip.value.length);
+    if(zip.value =="" || zip.value.length<5){
       Swal.fire({text:'Complete your zip code', title: " ",});
       zip.className += " invalid";
       valid = false;
