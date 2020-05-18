@@ -151,8 +151,10 @@
         <div id="locationField" >
           <input style="width:100%;" type="text" id="sAddress1" name="sAddress1" class="amazon2 underline"  placeholder="Address 1" onFocus="geolocate()">
       </div>
-        <input style="width:100%;" type="text" id="route" name="sAddress2" class="amazon2 underline"  placeholder="Route" title="Add unit number if applicable" data-toggle="tooltip" data-placement="top" rel="txtTooltip">
-      <input style="width:100%;" type="text" id="street_number" name="sAddress2" class="amazon2 underline"  placeholder="Street Number " title="Add unit number if applicable" data-toggle="tooltip" data-placement="top" rel="txtTooltip">
+      <input style="width:100%;" type="text" id="sAddress2" name="sAddress2" class="amazon2 underline"  placeholder="Address 2" title="Add unit number if applicable" data-toggle="tooltip" data-placement="top" rel="txtTooltip">
+
+      <input style="width:100%;" type="text" id="route" name="sAddress2" class="amazon2 underline"  placeholder="Route" title="Add unit number if applicable" data-toggle="tooltip" data-placement="top" rel="txtTooltip" hidden>
+      <input style="width:100%;" type="text" id="street_number" name="sAddress2" class="amazon2 underline"  placeholder="Street Number " title="Add unit number if applicable" data-toggle="tooltip" data-placement="top" rel="txtTooltip" hidden>
 
       <script>
             $(document).ready(function() {
@@ -268,10 +270,14 @@
                             var addressType = place.address_components[i].types[0];
                             if (componentForm[addressType]) {
                                 var val = place.address_components[i][componentForm[addressType]];
+                                // var address1_route;
 
-                                if (componentForm[addressType] == "street_number"|| componentForm[addressType]=="route"){
-                                    var address1 = place.address_components[i][componentForm[addressType]];
-                                    address_data=address_data+ address1;
+                                if (addressType == "street_number"){
+                                    var address1_street_number = place.address_components[i][componentForm[addressType]];
+
+                                }else if (addressType=="route"){
+                                    var address1_route = place.address_components[i][componentForm[addressType]];
+
                                 }
 
                                 // console.log("valor de cada address type");
@@ -281,7 +287,16 @@
                             }
                         }
 
-                        document.getElementById("sAddress1").value = address_data;
+                        if (!address1_street_number){
+
+                            document.getElementById("sAddress1").value =address1_route;
+                        }
+                        else{
+
+                            document.getElementById("sAddress1").value = address1_street_number +" "+ address1_route;
+                        }
+
+
                     }
 
                     function geolocate() {
