@@ -1,20 +1,7 @@
 <?php 
  session_start();
-//echo "ARRIBA";
-// echo $_SESSION["fullname"];
-// echo $_SESSION["email"];
-// echo $_SESSION["product"];
-// echo $_SESSION["ordernumber"];
-// echo $_SESSION["verification"];
- if ($_SESSION["verification"]==="verified") { 
-  $_SESSION["verification"]="completed"; 
- } else {
-   // Finally, destroy the session.
- session_destroy();
-   header("Location: index.php", true, 301);
- }
-// echo "this is order number";
-// echo $_SESSION["ordernumber"];
+
+
 ?>
 <!doctype html><html lang="en"><head>
 <!-- Required meta tags -->
@@ -45,12 +32,18 @@
 				
 			</head>
 			<body>
+        
 				<?php
             include('src/includes/header.php');
             ?>
+            <!-- NAVBAR -->
+			<div id="mySidenav" class="sidenav">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<a href="mailto:contact@nuvananutrition.com">Need help?</a>
+			</div
 				<section class="section-review" id="review">
 					<div class="container-fluid review">
-					<div class="row">
+					<div class="row row-ukn">
             <div class="col-md-8 offset-md-2 text-center">
             <div id="form-shadowed" class="container form-container">
               <div class="container h2-review">

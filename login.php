@@ -117,7 +117,7 @@ session_start();
                     //echo $_POST['password'];
                 
             }elseif($_SESSION["password"]!="919293nuvana"){
-                   echo "<h3 class='text-center' style='color: darkred'>Wrong password or user</h3>";
+                   echo "<h5 class='text-center' style='color: darkred'>Wrong password or user</h5>";
             }else{
                 //echo "else";
                 $_SESSION["wronp"]=0;

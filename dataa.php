@@ -19,7 +19,6 @@ else{
 
     <!-- Bootstrap -->
     <link href="src/css/font.css" rel="stylesheet">
-    <link href="src/css/style.css" rel="stylesheet" >
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -59,12 +58,6 @@ else{
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" ></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-
-
-
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.4/js/dataTables.responsive.min.js"></script>
 <!-- RESPONSIVE DATATABLE -->
 
     <!-- NEW FORM -->
@@ -166,8 +159,6 @@ $conn->close();
     <script>
     $(document).ready(function() {
     $('#datatbl').DataTable({
-     
-      "pageLength": 50,
     "order": [0,'desc'],
     "rowCallback": function( row, data, index ) {
                                 var allData = this.api().column(1).data().toArray();

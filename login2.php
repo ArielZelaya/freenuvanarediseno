@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,12 +20,14 @@
 <body>
 <?php
             include('src/includes/header.php'); ?>
-<div class="login-form">
+<div class="h-100 container-fluid banner " style="margin-top: 79px;">
+<div class=" login-form">
     <form action="selector2.php" method="POST">
     <style type="text/css">
 	.login-form {
 		width: 340px;
-    	margin: 50px auto;
+        margin: 50px auto;
+        
 	}
     .login-form form {
     	margin-bottom: 15px;
@@ -52,26 +57,11 @@
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">Log in</button>
             <?php
-            //session_start();
-            //$_SESSION["wronp"]=1;
-            if (empty($_SESSION["password"])){
-                //echo"Correcto";
-                //echo $_SESSION["wronp"];
-                //$_SESSION["wronp"]=1; 
-                $_SESSION["wronp"]=0;
-                    //echo "last try";
-                    //echo $_SESSION["wronp"];
-                    //echo "Varible de sesison";
-                    //echo $_POST['password'];
-                
-            }elseif($_SESSION["password"]!="919293nuvana"){
-                   echo "<h3 class='text-center' style='color: darkred'>Wrong password or user</h3>";
-            }else{
-                //echo "else";
-                $_SESSION["wronp"]=0;
-                echo $_SESSION["wronp"];
-
-            }
+                    if (isset($_SESSION['message']))
+                    {
+                        echo $_SESSION['message'];
+                        unset($_SESSION['message']);
+                    }
             ?>
         </div>
          <div class="clearfix">
@@ -80,7 +70,9 @@
         </div>        
     </form>
 </div>
+</div>
 <?php include('src/includes/footer.php');?>
+
 
     
 </body>
