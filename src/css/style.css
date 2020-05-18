@@ -24,7 +24,7 @@ body{
     bottom: 0;
 }
 .container.form-container{
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.65);
     padding-top: 40px;
     padding-bottom: 40px;
 
@@ -513,7 +513,9 @@ p.footer-text{
     .testimonial-mobil{
         display: none;
     }
-    
+    .icon-img{
+      width: 70%;
+    }
 
 }
 /* MOBIL */
@@ -615,5 +617,8 @@ padding: 100px 15px 100px 15px;
     }
     .container-fluid.nav-bar.fixed-header{
       padding: 15px 20px 15px 20px;
+    }
+    .icon-img{
+      width: 100%;
     }
 }

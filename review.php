@@ -237,7 +237,6 @@
                         // geographical location types.
                         autocomplete = new google.maps.places.Autocomplete(
                             document.getElementById('sAddress1'), {types: ['geocode']});
-
                         // Avoid paying for data that you don't need by restricting the set of
                         // place fields that are returned to just the address components.
                         autocomplete.setFields(['address_component']);
@@ -312,8 +311,6 @@
                             });
                         }
                     }
-
-
                 </script>
                 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHrRpn0FGYLAZ0bi1UTHPCmGClIZo8diA&libraries=places&callback=initAutocomplete" ></script>
                       </body>
@@ -504,7 +501,7 @@ t.splice(1,1);
       city.className += " invalid";
       valid = false;
     }else{city.classList.remove("invalid");}
-    if(sAddress1.value =="" || lName.value.length <= 5  ){
+    if(sAddress1.value =="" || sAddress1.value.length <= 5  ){
       Swal.fire({text:'Complete your address 1', title: " ",});
       sAddress1.className += " invalid";
       valid = false;

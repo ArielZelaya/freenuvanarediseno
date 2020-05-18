@@ -51,7 +51,7 @@ $_SESSION["verification"]=20;
                                     This offer is NOT contingent on leaving a review on any website. Product must have been purchased through Amazon.com or NuvanaNutrition.com. </h6></div>
 							</div>
 							<div class="col-md-2"></div>
-							<div class="col-md-5 text-center right-section-banner" style="margin-top: 70px" >
+							<div class="col-md-5  text-center right-section-banner" style="margin-top: 70px" >
 								<div class="container rgh-container">
 								<div class="overlay">
 									<h2>Share your HONEST feedback with us and we'll send you a FREE
@@ -91,12 +91,12 @@ $_SESSION["verification"]=20;
 							<div class="container steps text-center">
 								<h2 class="text-center" style="max-width: 92%">Get Your FREE Bottle in 3 Simple Steps</h2>
 								<div class="row three-steps">
-									<div class="col-md-4">
+									<div class="col-md-4 col-sm-4">
 										<span class="step-img">
 											<img class="step-image" src="src/img/step1.png" alt="">
 											</span>
 											<span class="step-icon">
-												<img src="src/img/icons/icon-1.png" alt="">
+												<img class="icon-img" src="src/img/icons/icon-1.png" alt="">
 												</span>
 												<h4>
 													<!-- <strong class="step-strong">01.</strong> -->
@@ -105,12 +105,12 @@ $_SESSION["verification"]=20;
 												</h4>
 												<p>Please fill out the form and use the same email address that you used for the account you purchased our product from.  This email will also be used to send tracking for your FREE bottle.</p>
 											</div>
-											<div class="col-md-4">
+											<div class="col-md-4 col-sm-4">
 												<span class="step-img">
 													<img class="step-image" src="src/img/step2.png" alt="">
 													</span>
 													<span class="step-icon">
-														<img src="src/img/icons/icon-2.png" alt="">
+														<img class="icon-img" src="src/img/icons/icon-2.png" alt="">
 														</span>
 														<h4>
 															<!-- <strong class="step-strong">02.</strong> -->
@@ -119,12 +119,12 @@ $_SESSION["verification"]=20;
 														</h4>
 														<p>Share your honest feedback with us so that we can continue to improve our products and service for you. Sharing your experience will help other customers in the same situation.</p>
 													</div>
-													<div class="col-md-4">
+													<div class="col-md-4 col-sm-4">
 														<span class="step-img">
 															<img class="step-image" src="src/img/step3.png" alt="">
 															</span>
 															<span class="step-icon">
-																<img src="src/img/icons/icon-3.png" alt="">
+																<img  class="icon-img" src="src/img/icons/icon-3.png" alt="">
 																</span>
 																<h4>
 																	<!-- <strong class="step-strong">03.</strong> -->
