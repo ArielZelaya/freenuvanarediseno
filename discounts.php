@@ -59,9 +59,16 @@ $verification=$_SESSION["verification"];
 				
 			</head>
 			<body>
+                
 				<?php
             include('src/includes/header.php');
             ?>
+            <!-- NAVBAR -->
+			<div id="mySidenav" class="sidenav">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<a href="mailto:contact@nuvananutrition.com">Need help?</a>
+
+			</div
 				<section class="section-review" id="review">
 					<div class="container-fluid discounts">
 					<div class="row">
@@ -100,7 +107,9 @@ first order at <a href = "http://www.nuvananutrition.com">nuvananutrition.com<a>
       <?php 
       use PHPMailer\PHPMailer\PHPMailer;
       use PHPMailer\PHPMailer\Exception;
-      require_once('new_order.php');
+      echo "BEFORE FUNCTION";
+        require_once('new_order.php');
+        echo "AFTER FUNCTION";
           //change credentials to your own
           $servername = "localhost";
           $username = "marvinvi_wp11";

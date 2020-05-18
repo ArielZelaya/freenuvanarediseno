@@ -8,7 +8,7 @@ $_SESSION["verification"]=20;
 <!-- Required meta tags -->
 <meta charset="utf-8">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- Optional JavaScript -->
 		 
 <!-- 		SWEETALERT -->
@@ -27,6 +27,12 @@ $_SESSION["verification"]=20;
 				
 			</head>
 			<body>
+				<!-- NAVBAR -->
+			<div id="mySidenav" class="sidenav">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<a href="mailto:contact@nuvananutrition.com">Need help?</a>
+
+			</div>
 			<?php
             include('src/includes/header.php');
             ?>
@@ -83,7 +89,7 @@ $_SESSION["verification"]=20;
 						</section>
 						<section id="steps">
 							<div class="container steps text-center">
-								<h2 class="text-center">Get Your FREE Bottle in 3 Simple Steps</h2>
+								<h2 class="text-center" style="max-width: 92%">Get Your FREE Bottle in 3 Simple Steps</h2>
 								<div class="row three-steps">
 									<div class="col-md-4">
 										<span class="step-img">

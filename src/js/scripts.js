@@ -12,11 +12,13 @@ function firstForm(){
     var select = document.getElementById("product").value;
     var ordernumber = document.getElementById("ordernumber").value;
     var valit = document.getElementById("valida").value;
-    if(fname ==""){
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    
+    if(fname =="" ){
         Swal.fire({text:'Complete your full name', title: " ",});
         return false;
     }
-    if(email ==""){
+    if(email =="" || (re.test(email)==false)){
         Swal.fire({text:'Complete your email', title: " ",});
         console.log("Email vacio");
         return false;
@@ -25,7 +27,7 @@ function firstForm(){
         Swal.fire({text:'Choose a Nuvana product', title: " ",});
         return false;
     }
-    if(ordernumber =="" ){
+    if(ordernumber =="" || ordernumber.length<19){
 
         Swal.fire({text:'Complete your order number', title: " ",});
         return false;

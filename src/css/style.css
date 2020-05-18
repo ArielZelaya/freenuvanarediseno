@@ -1,3 +1,9 @@
+.burger{
+  display: none;
+}
+#logo-registered{
+  padding-top: 10px;
+}
 /* The sticky class is added to the header with JS when it reaches its scroll position */
 .sticky {
   position: fixed;
@@ -123,7 +129,7 @@ body{
     padding: 40px;
     width: 90%;
     min-width: 300px;
-    max-height: 766px;
+    /* max-height: 766px; */
   }
   .empare{
     margin: 35px auto;
@@ -481,6 +487,12 @@ p.footer-text{
 /* IPAD */
 
 @media (max-width: 768px) { 
+/*   #datatbl{
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+
+  } */
     .text-review{
         text-align: left;
         padding: 0 0px 0 0px;
@@ -506,6 +518,9 @@ p.footer-text{
 }
 /* MOBIL */
 @media (max-width: 576px) { 
+  .burger{
+    display: inline;
+  }
   .container-fluid.review{
     padding-left: 5px;
     padding-right: 5px;
@@ -597,5 +612,8 @@ padding: 100px 15px 100px 15px;
     }
     .testimonial-3{
         display: none ;
+    }
+    .container-fluid.nav-bar.fixed-header{
+      padding: 15px 20px 15px 20px;
     }
 }
