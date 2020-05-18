@@ -1,6 +1,12 @@
 <?php 
  session_start();
-
+ if ($_SESSION["verification"]==="verified") { 
+  $_SESSION["verification"]="completed"; 
+ } else {
+   // Finally, destroy the session.
+ session_destroy();
+   header("Location: index.php", true, 301);
+ }
 
 ?>
 <!doctype html><html lang="en"><head>
